@@ -4,6 +4,12 @@ import { Sequelize } from 'sequelize-typescript';
 import { Op } from 'sequelize';
 import { databaseConfig } from 'src/shared/config/database';
 import { User } from 'src/entities/User';
+import { Actor } from 'src/entities/Actors';
+import { Director } from 'src/entities/Director';
+import { Film } from 'src/entities/Film';
+import { FilmActor } from 'src/entities/FilmActor';
+import { FilmGenre } from 'src/entities/FilmGenre';
+import { Genre } from 'src/entities/Genre';
 
 const namespace = cls.createNamespace('ENROLMENT_APPLICANTS_SERVICE');
 
@@ -62,7 +68,14 @@ export const databaseProvider = {
 
     const sequelize = new Sequelize({ ...config, operatorsAliases });
     sequelize.addModels([
-      User
+      User,
+      Actor,
+      Director,
+      Film,
+      FilmActor,
+      FilmGenre,
+      Genre
+      
     ]);
     return sequelize.sync({ force: false });
   },

@@ -28,18 +28,6 @@ export class UserController {
         return this.userService.findById(id);
     }
 
-    @Post('mail/send-verify/:id')
-    async sendVerifyMail(@Param('id') id: string){
-        return await this.userService.sendVerifyMail(id);
-    }
-
-    @Post('mail/verify/:id')
-    async verifyUser(@Param('id') id: string,@Body() verifyCodeDTO :VerifyCodeDTO) {
-        console.log("code"+verifyCodeDTO.code);
-        return await this.userService.verifyUser(id,verifyCodeDTO.code);
-    }
-
-    
     @Post()
     @ApiOperation({ summary: 'create user' })
     async createUser(@Body() data: UserDTO) {
